@@ -15,6 +15,7 @@ public class MonkeyLearnClient {
        // the main method for debug
 	public static void main(String[] args) {
 		String[] textList = {
+				"Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, and online services.",
 				"Elon Musk has shared a photo of the spacesuit designed by SpaceX. This is the second image shared of the new design and the first to feature the spacesuit’s full-body look.", };
 		List<List<String>> words = extractKeywords(textList);
 		for (List<String> ws : words) {
