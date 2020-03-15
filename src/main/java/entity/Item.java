@@ -73,7 +73,7 @@ public class Item {
 	//builder pattern
 	
 	// must use static inner class
-	// if the ItemBuilder is not static, then ItemBuilder must be instanced before instance Item. 
+	// if the ItemBuilder is not static, then Item must be instanced before instance ItemBuilder. 
 	// But we want to use Builder to create Item.
 	public static class ItemBuilder {
 		//ItemBuilder has the local variable same as Item's variable
