@@ -566,11 +566,11 @@
     section.appendChild(title);
 
     // category
-    var category = $create('p', {
-      className: 'item-category'
+    var keyword = $create('p', {
+      className: 'item-keyword'
     });
-    category.innerHTML = 'Category: ' + item.categories.join(', ');
-    section.appendChild(category);
+    keyword.innerHTML = 'Keyword: ' + item.keywords.join(', ');
+    section.appendChild(keyword);
 
     // stars
     var stars = $create('div', {
