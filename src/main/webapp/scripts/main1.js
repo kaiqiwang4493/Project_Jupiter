@@ -13,6 +13,7 @@
    */
   function init() {
     // register event listeners
+	  // # is to select the id
     document.querySelector('#login-form-btn').addEventListener('click', onSessionInvalid);
     document.querySelector('#login-btn').addEventListener('click', login);
     document.querySelector('#register-form-btn').addEventListener('click', showRegisterForm);

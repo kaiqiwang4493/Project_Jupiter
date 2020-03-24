@@ -6,7 +6,7 @@
 	    var displayStyle = style ? style : 'block';
 	    element.style.display = displayStyle;
 	}
-	
+
 	function clearLoginError() {
 	    document.querySelector('#login-error').innerHTML = '';
 	}
