@@ -72,6 +72,8 @@ public class ItemHistory extends HttpServlet {
 		MySQLConnection connection = new MySQLConnection();
 		JSONObject input = RpcHelper.readJSONObject(request);
 		String userId = input.getString("user_id");
+		// the parameter should be a JSONObject includes all information
+		// However, the return of input get JSONObject() is a item_id
 		Item item = RpcHelper.parseFavoriteItem(input.getJSONObject("favorite"));
 		
 		connection.setFavoriteItems(userId, item);

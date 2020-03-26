@@ -14,6 +14,7 @@
   function init() {
     // register event listeners
 	  // # is to select the id
+	  // .querySelector('#demo'): to get the first element with the id:demo
     document.querySelector('#login-form-btn').addEventListener('click', onSessionInvalid);
     document.querySelector('#login-btn').addEventListener('click', login);
     document.querySelector('#register-form-btn').addEventListener('click', showRegisterForm);
@@ -21,8 +22,8 @@
     document.querySelector('#nearby-btn').addEventListener('click', loadNearbyItems);
     document.querySelector('#fav-btn').addEventListener('click', loadFavoriteItems);
     document.querySelector('#recommend-btn').addEventListener('click', loadRecommendedItems);
-    //validateSession();
-    onSessionValid({"user_id":"1111","name":"John Smith","status":"OK"});
+    validateSession();
+    //onSessionValid({"user_id":"1111","name":"John Smith","status":"OK"});
   }
 
   /**
@@ -38,6 +39,7 @@
     showLoadingMessage('Validating session...');
 
     // make AJAX call
+    
     ajax('GET', url, req,
       // session is still valid
       function(res) {
@@ -47,6 +49,7 @@
           onSessionValid(result);
         }
       });
+      
   }
 
   function onSessionValid(result) {
@@ -174,7 +177,8 @@
   function login() {
     var username = document.querySelector('#username').value;
     var password = document.querySelector('#password').value;
-    password = md5(username + md5(password));
+    //temporary do not use md5.
+    //password = md5(username + md5(password));
 
     // The request parameters
     var url = './login';
@@ -229,7 +233,7 @@
     	return
     }
     
-    password = md5(username + md5(password));
+    //password = md5(username + md5(password));
 
     // The request parameters
     var url = './register';
@@ -467,17 +471,25 @@
    * API end point: [POST]/[DELETE] /history request json data: {
    * user_id: 1111, visited: [a_list_of_business_ids] }
    */
-  function changeFavoriteItem(item_id) {
+  /////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////
+  function changeFavoriteItem(item) {
+	// check whether this item has been visited or not
+	    var li = document.querySelector('#item-' + item.item_id);
+	    var favIcon = document.querySelector('#fav-icon-' + item.item_id);
+	    var favorite = !(li.dataset.favorite === 'true');
+	  /*
     // check whether this item has been visited or not
     var li = document.querySelector('#item-' + item_id);
     var favIcon = document.querySelector('#fav-icon-' + item_id);
     var favorite = !(li.dataset.favorite === 'true');
-
+	*/
     // request parameters
     var url = './history';
     var req = JSON.stringify({
       user_id: user_id,
-      favorite: [item_id]
+      favorite: item
     });
     var method = favorite ? 'POST' : 'DELETE';
 
@@ -608,9 +620,11 @@
     var favLink = $create('p', {
       className: 'fav-link'
     });
-
+    //item just the item_id.
+    /////////////////////////
+    ///////////////////////////
     favLink.onclick = function() {
-      changeFavoriteItem(item_id);
+      changeFavoriteItem(item);
     };
 
     favLink.appendChild($create('i', {

@@ -11,7 +11,8 @@ import com.monkeylearn.MonkeyLearnException;
 import com.monkeylearn.MonkeyLearnResponse;
 
 public class MonkeyLearnClient {
-	private static final String API_KEY = "2d016e845e28da8c89e7c50996305f70b41618f9";// make sure change it to your api key.
+	private static final String API_KEY = "f6a0379324c0b2679271946886767b3224f55c24";
+	//private static final String API_KEY = "2d016e845e28da8c89e7c50996305f70b41618f9";// make sure change it to your api key.
        // the main method for debug
 	public static void main(String[] args) {
 		String[] textList = {
